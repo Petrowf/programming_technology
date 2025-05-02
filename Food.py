@@ -8,3 +8,5 @@ class Food(MenuPosition):
 
     def __str__(self):
         return f"Категория: Еда, " + super().__str__() + f',  Масса: {self.mass} грамм'
+    def to_list(self):
+        return ["Еда", self.name, self.cost, self.time_to_complete, self.mass]

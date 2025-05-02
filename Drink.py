@@ -8,3 +8,5 @@ class Drink(MenuPosition):
 
     def __str__(self):
         return f"Категория: Напитки, " + super().__str__() + f',  Объём: {self.volume} мл'
+    def to_list(self):
+        return ["Напиток", self.name, self.cost, self.time_to_complete, self.volume]

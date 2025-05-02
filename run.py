@@ -15,26 +15,15 @@
 Вариант 4:
 Меню: название (строка), цена (дробное), время приготовления
 """
-from Food import Food
-from Drink import Drink
-
-def parse_objects_from_file_to_list(filename):
-    objects_list = []
-
-    with open(filename) as file:
-        objects_ = file.readlines()
-
-    for menu_position in objects_:
-        object_class = menu_position[0:menu_position.find(' ')]
-
-        if object_class == 'Food':
-            objects_list.append(Food(menu_position))
-        elif object_class == 'Drink':
-            objects_list.append(Drink(menu_position))
-
-    return objects_list
+from Ui import Ui
+from PyQt5 import QtWidgets
 
 if __name__ == "__main__":
-    objects = parse_objects_from_file_to_list('menu')
-    for object_ in objects:
-        print(str(object_))
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    menu_window = QtWidgets.QMainWindow()
+    ui = Ui()
+    ui.setupUi(menu_window)
+    ui.connect_slots()
+    menu_window.show()
+    sys.exit(app.exec_())
